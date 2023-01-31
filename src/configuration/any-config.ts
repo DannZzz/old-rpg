@@ -1,5 +1,6 @@
 import { randomNumber } from "anytool"
 import { processOr } from "../config"
+import { Game } from "../database/models/Game"
 import { ObjectType } from "../game/typing/any"
 import Money, { Price } from "../game/typing/Money"
 import {
@@ -56,9 +57,9 @@ export const MaxNicknameLength: number = 40
 
 export const HeroCostIfExists: number = 15
 
-// export const UserDatabaseOptions: Partial<User> = {
-//   packs: { startpack: 1, big_chest: 1 },
-// }
+export const GameDatabaseOptions: Partial<Game> = {
+  packs: { startpack: 1, big_chest: 1 },
+}
 
 export const UserXpAfterWin = () => randomNumber(25, 75)
 

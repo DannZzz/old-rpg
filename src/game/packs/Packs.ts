@@ -1,4 +1,5 @@
 import { Chest } from "anytool"
+import { Game } from "../../database/models/Game"
 import { HeroList, HeroResolvable } from "../../heroes/typing/Other"
 import { ObjectType } from "../typing/any"
 import { RandomMoney } from "../typing/Money"
@@ -48,15 +49,15 @@ export class Packs {
     return null
   }
 
-  // static resolveUserPacks(
-  //   packs: User["packs"]
-  // ): Partial<ObjectType<keyof User["packs"], [number, Pack]>> {
-  //   const a = {}
-  //   for (let i in packs) {
-  //     const pack = this.find(i)
-  //     if (!pack || !packs[i] || 0 > packs[i]) continue
-  //     a[i] = [packs[i], pack]
-  //   }
-  //   return a
-  // }
+  static resolveUserPacks(
+    packs: Game["packs"]
+  ): Partial<ObjectType<keyof Game["packs"], [number, Pack]>> {
+    const a = {}
+    for (let i in packs) {
+      const pack = this.find(i)
+      if (!pack || !packs[i] || 0 > packs[i]) continue
+      a[i] = [packs[i], pack]
+    }
+    return a
+  }
 }

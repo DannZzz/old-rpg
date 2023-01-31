@@ -1,0 +1,27 @@
+@import "../../../styles/vars.scss";
+
+.custom-link {
+  text-align: center;
+  cursor: pointer;
+  padding: 5px 10px;
+  color: $outline-color;
+  width: min-content;
+
+  &.custom-link-border {
+    border: 1px solid $outline-color;
+    border-radius: 3px;
+  }
+  span {
+    white-space: pre;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+  }
+
+  &:hover {
+    color: lighten($color: $outline-color, $amount: 10%);
+    border-color: lighten($color: $outline-color, $amount: 10%);
+  }
+}
