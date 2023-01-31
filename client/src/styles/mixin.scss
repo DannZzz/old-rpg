@@ -1,0 +1,17 @@
+@import "vars.scss";
+
+@mixin bg-set {
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100vw;
+  height: 100vh;
+}
+
+@mixin correct-y {
+  padding-top: $nav-height;
+}
+@mixin dont-select {
+  -webkit-user-select: none; /* Safari */
+  -ms-user-select: none; /* IE 10 and IE 11 */
+  user-select: none; /* Standard syntax */
+}

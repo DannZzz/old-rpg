@@ -1,0 +1,15 @@
+@import "../../styles/mixin.scss";
+@import "../../styles/vars.scss";
+
+.home {
+  background-image: url("../../assets/home-bg.jpg");
+  @include bg-set;
+
+  .home-content {
+    @include correct-y;
+    color: $text-color;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}

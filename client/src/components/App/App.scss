@@ -1,4 +1,5 @@
 @import "../../styles/vars.scss";
+@import "../../styles/mixin.scss";
 @import url("https://fonts.googleapis.com/css2?family=Itim&display=swap");
 
 html,
@@ -8,10 +9,6 @@ body {
   font-family: "Itim", cursive;
 }
 
-.app {
-  width: 100vw;
-  height: 100vh;
-  background-image: url("../../assets/home-bg.jpg");
-  background-repeat: no-repeat;
-  background-size: cover;
+* {
+  @include dont-select;
 }

@@ -3,5 +3,8 @@
     "wiki": "Wiki",
     "leaderboard": "Leaderboard",
     "signin": "Sign In"
+  },
+  "home": {
+    "title-1": "Welcome to the world of fantasy!"
   }
 }

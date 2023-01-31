@@ -1,18 +1,18 @@
 @import "../../styles/vars.scss";
 
 .nav {
-  height: 75px;
-  position: relative;
+  height: $nav-height;
+  width: calc(100% - 60px);
+  position: fixed;
   padding: 5px 30px;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 10px;
+  gap: 50px;
   background-color: rgba($color: $bg-color, $alpha: 0.7);
 
   .nav-link {
     &.logo {
-      flex: 1;
       img {
         height: 70px;
         transition: transform 0.3s ease-out;
@@ -20,6 +20,17 @@
           transform: translateY(-5px);
         }
       }
+    }
+  }
+
+  .nav-right {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: $text-color-main;
+
+    & .nav-settings-icon {
+      cursor: pointer;
     }
   }
 }
