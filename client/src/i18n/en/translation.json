@@ -6,5 +6,23 @@
   },
   "home": {
     "title-1": "Welcome to the world of fantasy!"
+  },
+  "settings": {
+    "save-button": "Save",
+    "title": "Settings",
+    "graphic": {
+      "title": "Graphic",
+      "low": "Low",
+      "high": "High"
+    }
+  },
+  "wiki": {
+    "container": {
+      "heroes": "Heroes"
+    }
+  },
+  "auth": {
+    "title": "Log In For Free!",
+    "login-with": "Log in with {{social}}"
   }
 }

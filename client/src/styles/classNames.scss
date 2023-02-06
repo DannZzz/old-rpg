@@ -1,0 +1,11 @@
+.clickable {
+  cursor: pointer;
+}
+
+.scale-hover {
+  transition: transform 0.1s linear;
+
+  &:hover {
+    transform: scale(1.2);
+  }
+}

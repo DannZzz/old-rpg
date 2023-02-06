@@ -1,12 +1,22 @@
+import cors from "@koa/cors"
 import Router from "@koa/router"
-import HeroPublicRouter from "./routers/public/hero-public"
+import DataRouter from "./routers/private/data.js"
+import RedirectRouter from "./routers/private/redirects.js"
 
 const ApiRouter = new Router({ prefix: "/api/v1" })
 
 ApiRouter.use(
-  "/public",
-  HeroPublicRouter.routes(),
-  HeroPublicRouter.allowedMethods()
+  "/private",
+  cors(),
+  RedirectRouter.routes(),
+  RedirectRouter.allowedMethods()
+)
+
+ApiRouter.use(
+  "/private",
+  cors(),
+  DataRouter.routes(),
+  DataRouter.allowedMethods()
 )
 
 export default ApiRouter

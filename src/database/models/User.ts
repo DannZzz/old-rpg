@@ -1,35 +1,34 @@
+import { randomNumber } from "anytool"
 import mongoose from "mongoose"
-import { ObjectType } from "../../game/typing/any"
+import { ObjectType } from "../../@types/typing.js"
+import { SpecId } from "./Auth.js"
 
-export type UserCooldownKeys =
-  | "daily"
-  | "adventures"
-  | "rating"
-  | "usernameChange"
+export type UserCooldownKeys = "usernameChange"
+
 export interface User {
   _id: string
-  secondary?: number
-  primary?: number
+  specId: SpecId
+  username?: string
   cooldowns?: ObjectType<UserCooldownKeys, Date>
-  vipUntil?: Date
 }
 
 export const User = mongoose.model(
   "user",
   new mongoose.Schema<User>({
     _id: String,
-    secondary: { type: Number, default: 0 },
-    primary: { type: Number, default: 0 },
+    specId: String,
+    username: {
+      type: String,
+      default: () => `unnamed#${randomNumber(0, 90000000)}`,
+    },
     cooldowns: { type: Object, default: {} },
-    vipUntil: { type: Date, default: null },
   })
 )
 
 export const UserKeys: readonly (keyof User)[] = [
   "_id",
-  "secondary",
+  "username",
+  "specId",
   "cooldowns",
-  "primary",
-  "vipUntil",
 ]
-export const UserKeysApi: readonly (keyof User)[] = ["_id", "vipUntil"]
+export const UserKeysApi: readonly (keyof User)[] = ["_id"]

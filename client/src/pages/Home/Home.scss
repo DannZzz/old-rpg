@@ -1,15 +1,43 @@
 @import "../../styles/mixin.scss";
 @import "../../styles/vars.scss";
 
+body {
+  overflow: hidden;
+}
 .home {
+  scroll-behavior: 0px;
+  // filter: brightness(50%);
   background-image: url("../../assets/home-bg.jpg");
   @include bg-set;
-
   .home-content {
     @include correct-y;
     color: $text-color;
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-direction: column;
+    gap: 100px;
+  }
+}
+
+.tree {
+  position: absolute;
+  width: 340px;
+  right: 300px;
+  bottom: -30px;
+  opacity: 0.96;
+  &.animate {
+    animation: tree-move 6s cubic-bezier(0.445, 0.05, 0.55, 0.95) infinite;
+  }
+}
+@keyframes tree-move {
+  0% {
+    transform: translateY(-20px);
+  }
+  50% {
+    transform: translateY(5px);
+  }
+  100% {
+    transform: translateY(-20px);
   }
 }

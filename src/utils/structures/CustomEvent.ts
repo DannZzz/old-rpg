@@ -1,16 +1,14 @@
 import { Chest } from "anytool"
-import HeroName from "../../configuration/HeroNaming"
-import { MoneyType } from "../../game/typing/Money"
 
 type Response<T extends ReadonlyArray<any> | Array<T>> = [...T, Date]
 
 export interface CustomEvents {
-  moneyChange: [Money: { type: MoneyType; targetId: string; amount: number }]
-  userXpChange: [
-    OldUser: { userId: string; xp: number },
-    NewUser: { userId: string; xp: number }
-  ]
-  skinAdd: [Data: { userId: string; heroId: HeroName; skinId: string }]
+  // moneyChange: [Money: { type: MoneyType; targetId: string; amount: number }]
+  // userXpChange: [
+  //   OldUser: { userId: string; xp: number },
+  //   NewUser: { userId: string; xp: number }
+  // ]
+  // skinAdd: [Data: { userId: string; heroId: HeroName; skinId: string }]
 }
 
 const listeners = new Chest<
@@ -27,7 +25,7 @@ export class CustomEvent {
     const a = data[0]
     const thisEvent = listeners.get(event)
     if (!thisEvent) return
-    ;(thisEvent as any[]).forEach((fn) => fn(...data, new Date()))
+    ;(thisEvent as any[]).forEach((fn) => fn(...(data as any), new Date()))
   }
 
   static on<E extends keyof CustomEvents>(

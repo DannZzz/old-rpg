@@ -1,4 +1,5 @@
 @import "../../styles/vars.scss";
+@import "../../styles/mixin.scss";
 
 .nav {
   height: $nav-height;
@@ -9,7 +10,7 @@
   align-items: center;
   justify-content: center;
   gap: 50px;
-  background-color: rgba($color: $bg-color, $alpha: 0.7);
+  @include transparent-bg(0.7);
 
   .nav-link {
     &.logo {
@@ -24,13 +25,68 @@
   }
 
   .nav-right {
+    right: 30px;
+    position: absolute;
     display: flex;
     align-items: center;
     justify-content: center;
+    gap: 10px;
     color: $text-color-main;
 
     & .nav-settings-icon {
-      cursor: pointer;
+      transition: transform 0.2s linear;
+      font-size: 1.5rem;
+
+      &:hover {
+        transform: rotate(90deg);
+      }
     }
+  }
+}
+
+.settings-in-drawer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 20px;
+
+  .horizontal-icons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+
+    .volume-sliders {
+      width: 100px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+
+      .nav-settings-container {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 5px;
+
+        .slider {
+          width: 100%;
+        }
+
+        .nav-settings-icon {
+          font-size: 2em;
+        }
+      }
+    }
+  }
+
+  .graphic-settings {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    flex-direction: column;
   }
 }

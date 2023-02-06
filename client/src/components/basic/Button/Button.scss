@@ -1,0 +1,30 @@
+@import "../../../styles/vars.scss";
+@import "../../../styles/mixin.scss";
+
+.custom-button {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  outline: none;
+  border: 0;
+  vertical-align: middle;
+  text-decoration: none;
+  font-size: inherit;
+  font-family: inherit;
+  &.default:not(.disabled) {
+    @include buttonStyle($color: $default);
+  }
+
+  &.disabled {
+    cursor: not-allowed;
+    @include buttonStyle($color: $disabled, $enabled: false);
+  }
+
+  &.danger {
+    @include buttonStyle($color: $danger);
+  }
+
+  &.success {
+    @include buttonStyle($color: $success);
+  }
+}

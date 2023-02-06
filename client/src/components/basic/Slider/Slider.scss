@@ -1,0 +1,14 @@
+@import "../../../styles/vars.scss";
+
+.slider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
+
+  .slider-arrow-container {
+    .slider-arrow {
+      color: $bg-color;
+    }
+  }
+}

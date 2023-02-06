@@ -11,10 +11,12 @@
     "removeComments": true,
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
+    // "strict": true,
     "noImplicitAny": false,
+    "declaration": true,
     "skipLibCheck": true
   },
-  "include": ["src/**/*"],
+  "include": ["src/**/*", "src/@types", "src/utils/main.ts"],
   "exclude": ["node_modules"],
   "lib": ["esnext"],
   "ts-node": {

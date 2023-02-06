@@ -1,18 +1,22 @@
 import Koa from "koa"
-import mongoose from "mongoose"
-import { MONGO_URI, PORT } from "./config"
-import HeroHandler from "./handlers/hero-etc"
-import ApiRouter from "./web/api"
+import { PORT } from "./config.js"
+import connectMongo from "./database/connect.js"
+import ApiRouter from "./web/api.js"
+import http from "http"
+import { Server } from "socket.io"
+import connectSocketServer from "./io/connectSocket.js"
 
 const app = new Koa()
 
 app.use(ApiRouter.routes()).use(ApiRouter.allowedMethods())
 
-app.listen(PORT, async () => {
-  await HeroHandler()
+const server = http.createServer(app.callback())
+
+connectSocketServer(server)
+
+server.listen(PORT, async () => {
   console.log("Handlers ended")
-  mongoose.connect(MONGO_URI).then(() => {
-    console.log("Database connected")
-  })
+  connectMongo()
+
   console.log(`Server listening on http://localhost:${PORT}`)
 })

@@ -1,23 +1,13 @@
-import { processOr } from "../config"
-import { ObjectType } from "../game/typing/any"
-import { HeroSkinRarityNames, HeroAttributesEnum } from "../heroes/typing/Other"
+import { ObjectType } from "../@types/typing.js"
+import { processOr } from "../config.js"
 
-export const SkinLimits: ObjectType<
-  keyof typeof HeroSkinRarityNames,
-  Date,
-  true
-> = {
+export const SkinLimits: ObjectType<any, Date, true> = {
   egyptian: StringToDaTe(processOr("EgyptianLimit", "2022/8/10")),
   moon: StringToDaTe(processOr("MoonLimit", "2022/8/1")),
 }
 
-export const LimitedSkinsBuff: ObjectType<
-  keyof typeof HeroSkinRarityNames,
-  ObjectType<keyof typeof HeroAttributesEnum, number, true>,
-  true
-> = {
-  moon: { dmg: 120, hp: 600 },
-  egyptian: { dmg: 100 },
+export const LimitedSkinsBuff: ObjectType<any, any> = {
+  ptian: { dmg: 100 },
 }
 
 type Year = number

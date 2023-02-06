@@ -1,8 +1,5 @@
 import { formatNumber } from "anytool"
-import { ObjectType } from "../game/typing/any"
-import Heroes from "../heroes/Heroes"
-import Hero from "../heroes/typing/Hero"
-import { HeroResolvable } from "../heroes/typing/Other"
+import { ObjectType } from "../@types/typing.js"
 
 class Utils {
   /**
@@ -31,22 +28,6 @@ class Utils {
     return (((wins || 0) / (games || 0)) * 100 || 0).toFixed(1) + "%"
   }
 
-  // static resolveGames(heroes: Game["heroes"]) {
-  //   return (
-  //     Object.entries(heroes || {})?.reduce(
-  //       (d, [heroId, mongo]) => {
-  //         d["games"] += mongo["games"] || 0
-  //         d["wins"] += mongo["wins"] || 0
-  //         d["skins"] +=
-  //           (mongo?.["skinsHave"] || []).filter((s) => s !== heroId)?.length ||
-  //           0
-  //         return d
-  //       },
-  //       { games: 0, wins: 0, skins: 0 }
-  //     ) || { games: 0, wins: 0, skins: 0 }
-  //   )
-  // }
-
   static percentOf(sum: number, percent: number) {
     return Math.round((percent / 100) * sum)
   }
@@ -68,19 +49,5 @@ class Utils {
       })
       .join("")
   }
-
-  static resolveHero(hero: HeroResolvable): Hero[] {
-    if (typeof hero !== "string" && "heroes" in hero) {
-      return hero.heroes
-    }
-    return typeof hero === "string" ? [Heroes.find(hero)] : [hero]
-  }
-
-  // static levelFormat(xp: number) {
-  //   const lvl = Levels.levelFor(xp) || 1
-  //   return `${lvl === MaxLevel ? "MAX " : ""}${this.formatNumber(
-  //     lvl
-  //   )} (${XpEmoji} ${this.formatNumber(xp)})`
-  // }
 }
 export default Utils
